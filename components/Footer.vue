@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <p class="text-center">© Copyright.<nuxt-link class="text-primary" to="/nous" target="_blank">Nous</nuxt-link></p>
+                <p class="text-center">© Copyright.<nuxt-link class="text-primary" to="/nous">Notre enseigne</nuxt-link></p>
             </div>
         </div>
     </div>

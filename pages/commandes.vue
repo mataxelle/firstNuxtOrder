@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="text-center my-5">Commander</h1>
+        <h1 class="fst-italic text-center my-5">Commander</h1>
 
         <h2 class="mb-5">Produit disponibles</h2>
 
