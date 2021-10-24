@@ -1,13 +1,11 @@
 <template>
     <div>
-        <h1 class="text-center">Commander</h1>
+        <h1 class="text-center my-5">Commander</h1>
 
-        <h2>Produit disponibles</h2>
+        <h2 class="mb-5">Produit disponibles</h2>
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-                <Produit v-for="product in products" v-bind:name="product.name" v-bind:price="product.price" />
-            </div>
+            <Produit v-for="product in products" :key="product" :name="product.name" :price="product.price" />
         </div>
     </div>
 </template>
@@ -25,7 +23,7 @@ export default {
             products: [
                 {name: "Ice cream", price:"2.1"},
                 {name: "Eggs", price:"1.8"},
-                {name: "Beef", price:"'4.5'"},
+                {name: "Beef", price:"4.5"},
                 {name: "Coke Zero", price:"1.1"},
                 {name: "Apple", price:"2.4"},
                 {name: "Chicken", price:"3.6"},
