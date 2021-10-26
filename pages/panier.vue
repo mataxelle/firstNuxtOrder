@@ -5,15 +5,13 @@
         <h2 class="mb-5">Produit dans mon panier</h2>
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <Produit v-for="product in panier" :key="product" :name="product.name" :price="product.price" role="affichage" />
+            <Produit v-for="product in panier" :key="product.id" :name="product.name" :price="product.price" role="affichage" />
         </div>
     </div>
 </template>
 
 <script>
 import Produit from '@/components/Produit.vue'
-
-const panier = JSON.parse(localStorage.getItem("cartItem"));
 
 export default {
     components: {
