@@ -5,7 +5,13 @@
         <h2 class="mb-5">Produit disponibles</h2>
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <Produit v-for="product in products" :key="product" :name="product.name" :price="product.price" />
+            <Produit v-for="product in products" :key="product.id" :name="product.name" :price="product.price" v-on:commande="ajouterProduit" role="commander" />
+        </div>
+
+        <h2 class="mb-5">Produit dans mon panier</h2>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <Produit v-for="product in panier" :key="product.id" :name="product.name" :price="product.price" role="affichager" />
         </div>
     </div>
 </template>
@@ -21,20 +27,44 @@ export default {
     data(){
         return {
             products: [
-                {name: "Ice cream", price:"2.1"},
-                {name: "Eggs", price:"1.8"},
-                {name: "Beef", price:"4.5"},
-                {name: "Coke Zero", price:"1.1"},
-                {name: "Apple", price:"2.4"},
-                {name: "Chicken", price:"3.6"},
-                {name: "Cheese", price:"2.1"},
-                {name: "Pasta", price:"1.6"},
-                {name: "Milk", price:"1.1"},
-                {name: "Yogurt", price:"2.2"},
-                {name: "Carrot", price:"0.9"},
-                {name: "Tomato", price:"1.0"},
-            ]
+                { name: "Ice cream", price:"2.1" },
+                { name: "Eggs", price:"1.8" },
+                { name: "Beef", price:"4.5" },
+                { name: "Coke Zero", price:"1.1" },
+                { name: "Apple", price:"2.4" },
+                { name: "Chicken", price:"3.6" },
+                { name: "Cheese", price:"2.1" },
+                { name: "Pasta", price:"1.6" },
+                { name: "Milk", price:"1.1" },
+                { name: "Yogurt", price:"2.2" },
+                { name: "Carrot", price:"0.9" },
+                { name: "Tomato", price:"1.0" },
+            ],
+            panier: []
         }
+    },
+
+    methods:{
+        ajouterProduit(name, price){
+
+            const panier = this.panier;
+
+            const item = {
+                name : name,
+                price: price
+            };
+            
+            panier.push(item);
+
+            localStorage.setItem('cartItem', JSON.stringify(panier));
+        }
+    },
+
+    mounted() {
+        
+        const panier = JSON.parse(localStorage.getItem('cartItem'));
+
+        this.panier = panier;
     }
 }
 </script>
