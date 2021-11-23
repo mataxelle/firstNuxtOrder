@@ -13,8 +13,6 @@
 <script>
 import Produit from '@/components/Produit.vue'
 
-const panier = JSON.parse(localStorage.getItem('cartItem'));
-
 export default {
     components: {
       Produit
@@ -35,15 +33,15 @@ export default {
                 { name: "Yogurt", price:"2.2" },
                 { name: "Carrot", price:"0.9" },
                 { name: "Tomato", price:"1.0" },
-            ],
-            panier: []
+            ]
         }
     },
 
     methods:{
         ajouterProduit(name, price){
 
-            this.panier = panier;
+            //const panier = [];
+            const panier = JSON.parse(localStorage.getItem('cartItem')) || [];
 
             const item = {
                 name : name,
