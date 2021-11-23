@@ -7,17 +7,13 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <Produit v-for="product in products" :key="product.id" :name="product.name" :price="product.price" v-on:commande="ajouterProduit" role="commander" />
         </div>
-
-        <h2 class="mb-5">Produit dans mon panier</h2>
-
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <Produit v-for="product in panier" :key="product.id" :name="product.name" :price="product.price" role="affichager" />
-        </div>
     </div>
 </template>
 
 <script>
 import Produit from '@/components/Produit.vue'
+
+const panier = JSON.parse(localStorage.getItem('cartItem'));
 
 export default {
     components: {
@@ -47,7 +43,7 @@ export default {
     methods:{
         ajouterProduit(name, price){
 
-            const panier = this.panier;
+            this.panier = panier;
 
             const item = {
                 name : name,
@@ -58,13 +54,6 @@ export default {
 
             localStorage.setItem('cartItem', JSON.stringify(panier));
         }
-    },
-
-    mounted() {
-        
-        const panier = JSON.parse(localStorage.getItem('cartItem'));
-
-        this.panier = panier;
     }
 }
 </script>
