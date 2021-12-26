@@ -7,6 +7,7 @@
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             <p><span>{{ price }}</span></p>
             <button class="btn btn-primary" @click="$emit('commande', name, price)" v-if="role == 'commander'">Ajouter au panier</button>
+            <button class="btn btn-primary" @click="$emit('affichage', name, price)" v-if="role == 'affichager'">Supprimer</button>
         </div>
     </div>
     </div>

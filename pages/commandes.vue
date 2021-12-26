@@ -50,6 +50,8 @@ export default {
             
             panier.push(item);
 
+            alert('Produit ajouté au panier !');
+            
             localStorage.setItem('cartItem', JSON.stringify(panier));
         }
     }
